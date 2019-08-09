@@ -1,24 +1,38 @@
 'use strict'
 
-var form = document.querySelector('#form-datetime');
 
-form.addEventListener('submit', function() {
-    var inputDatetime = document.querySelector('#datetime').value;
+window.addEventListener('load', function () {
+    var start = document.querySelector('#start');
 
-    var datetime = new Date(inputDatetime);
+    function countDown(){
+        var result = setInterval(function () {
+            var inputDatetime = document.querySelector('#datetime').value;
+            var eventDatetime = new Date(inputDatetime);
+            var nowDate = new Date();
+    
+            var nowTime = nowDate.getTime();
+            var eventTime = eventDatetime.getTime();
+            var restTime = eventTime - nowTime;
+    
+            var seconds = Math.floor(restTime / 1000);
+            var minutes = Math.floor(seconds / 60);
+            var hours = Math.floor(minutes / 60);
+            var days = Math.floor(hours / 24);
+    
+            hours %= 24;
+            minutes %= 60;
+            seconds %= 60;
+    
+            document.getElementById('days').textContent = days;
+            document.getElementById('hours').textContent = hours;
+            document.getElementById('minutes').textContent = minutes;
+            document.getElementById('seconds').textContent = seconds;
+        }, 1000);
 
-    var nowDate = new Date();
-
-    if(datetime > nowDate){
-        localStorage.clear();
-        localStorage.setItem(datetime, datetime);
+        return result;
     }
-    else{
-        alert('The date is less than the current one');
-    }
 
-
-
+    start.addEventListener("click", function() {
+        countDown();
+    });
 });
-
-
