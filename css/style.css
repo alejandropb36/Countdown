@@ -3,9 +3,26 @@ header{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 10px;
     background: rgb(50, 50, 50);;
-    width: 50%;
+    width: 70%;
     height: 5%;
     border: 1px solid black;
-    padding: 3px;
+    padding: 5px;
 }
 
+#content{
+    width: 70%;
+    height: 30%;
+    padding: 5px;
+    border: 1px solid gray;
+    background-color: rgb(240, 240, 240);
+}
+
+.card{
+    width: 100px;
+    height: 90px;
+    border: 1px solid rgba(190, 190, 190, 0.95);
+    display: inline-block;
+    margin: 10px;
+    background-color: white; 
+    border-radius: 5px;
+}
